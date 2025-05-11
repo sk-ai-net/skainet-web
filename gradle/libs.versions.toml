@@ -1,0 +1,5 @@
+[versions]
+antora = "1.0.0"
+
+[plugins]
+antora = { id = "org.antora", version.ref = "antora" }

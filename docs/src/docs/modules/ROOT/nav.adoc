@@ -1,0 +1,2 @@
+.Core
+* xref:architecture.adoc[Architecture]

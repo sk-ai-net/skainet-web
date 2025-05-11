@@ -1,0 +1,5 @@
+# SKaiNET
+
+Repository hosting Antora based documentation for SKaiNET, a Kotlin multiplatform based framework for building and deploying machine learning models.
+
+Build as gradle project using the `antora` plugin.
