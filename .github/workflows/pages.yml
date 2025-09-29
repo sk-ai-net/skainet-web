@@ -37,11 +37,11 @@ jobs:
 
       - name: Ensure .nojekyll exists in generated site
         run: |
-          # Assuming default location build/site
-          if [ -d build/site ]; then
-            touch build/site/.nojekyll
+          # Antora outputs to docs/_public directory
+          if [ -d docs/_public ]; then
+            touch docs/_public/.nojekyll
           else
-            echo "Error: build/site not found"
+            echo "Error: docs/_public not found"
             exit 1
           fi
 
@@ -51,14 +51,14 @@ jobs:
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build/site
+          path: docs/_public
 
       - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/site
+          publish_dir: docs/_public
 
       - name: Show published URL
         run: |
