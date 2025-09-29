@@ -52,13 +52,22 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/_public
+          branch: site
 
-      - name: Deploy to Pages
+
+
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_public
 
       - name: Show published URL
         run: |
