@@ -1,0 +1,4 @@
+= Explanations
+:page-role: explanation
+
+Conceptual background, design rationale, and trade‑offs behind APIs and implementation choices.

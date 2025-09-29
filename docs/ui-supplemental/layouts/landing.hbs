@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{page.title}} | Skainet Docs</title>
+  {{> head}}            {{!-- from Default UI; pulls core CSS/JS and our head-styles override --}}
+</head>
+<body class="sk-body">
+  {{> header}}
+  {{> header-scripts}}  {{!-- from Default UI; safe to call even if empty in some bundles --}}
+
+  <section class="sk-hero">
+    <div class="sk-hero-inner">
+      <div class="sk-badge">Kotlin ML Framework</div>
+      <h1>{{page.title}}</h1>
+      <p class="sk-hero-sub">
+        Build modern ML apps in Kotlin — fast, efficient, portable.
+      </p>
+      <div class="sk-cta">
+        <a class="sk-btn sk-btn-primary" href="{{{siteRootPath}}}/skainet/HEAD/tutorials/index.html">Get Started</a>
+        <a class="sk-btn sk-btn-ghost" href="https://github.com/sk-ai-net/skainet">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sk-cards">
+    <div class="sk-cards-grid">
+      {{> landing-cards}}
+    </div>
+  </section>
+
+  <main class="sk-container">
+    <article class="sk-article">
+      {{{page.contents}}}
+    </article>
+  </main>
+
+  {{> footer}}
+  {{> footer-scripts}}  {{!-- ✅ correct Default UI partial for scripts at the end --}}
+</body>
+</html>
+

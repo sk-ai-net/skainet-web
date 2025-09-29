@@ -1,0 +1,10 @@
+= How to Define an MLP with the Module DSL
+:page-role: howto
+
+Construct a compact MLP using `Input`, `Linear`, and activation modules, then call `forward(input)`.
+
+== Steps
+. Declare the input shape.
+. Stack `Linear` and activation layers.
+. Initialize parameters.
+. Call `forward()` and verify the output shape matches your expectation.

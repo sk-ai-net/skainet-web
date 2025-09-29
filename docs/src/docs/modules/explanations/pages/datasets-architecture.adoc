@@ -1,0 +1,4 @@
+= Datasets and Batching: Extending Beyond MNIST
+:page-role: explanation
+
+Describe the dataset interfaces, batch iterators, and guidance on adding new datasets (formats, transforms, caching).

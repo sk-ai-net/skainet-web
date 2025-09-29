@@ -1,6 +1,11 @@
-name: daily-standapp
-title: Dialy-StandAPP
-version:
-start_page: ROOT:index.adoc
+name: skainet
+title: SKaiNET
+version: HEAD
 nav:
-- modules/ROOT/nav.adoc
+  - modules/ROOT/nav.adoc
+  - modules/arc42/nav.adoc
+  - modules/tutorials/nav.adoc
+  - modules/how-to/nav.adoc
+  - modules/reference/nav.adoc
+  - modules/explanations/nav.adoc
+  - modules/project/nav.adoc

@@ -1,0 +1,4 @@
+* xref:index.adoc[Tutorials]
+** xref:build-first-tensor-cpu.adoc[Build Your First Tensor (CPU Backend)]
+** xref:slice-and-view-tensors.adoc[Slice, View, and Reshape]
+** xref:train-minimal-mlp-mnist.adoc[Train a Minimal MLP on MNIST]

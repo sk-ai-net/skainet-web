@@ -1,0 +1,44 @@
+= Build Your First Tensor and Run It on the CPU Backend
+:page-role: tutorial
+
+In this guided lesson, you will create basic tensors, perform simple arithmetic, and execute everything on SKaiNET's default CPU backend.
+
+== Prerequisites
+* Kotlin + Gradle
+* A project depending on the SKaiNET *develop* artifacts
+* Java 17+ recommended
+
+== Steps
+. *Add the dependency* to your Gradle build (replace versions as needed).
++
+[source,kotlin]
+----
+// settings.gradle.kts: ensure mavenCentral()
+// build.gradle.kts
+dependencies {
+    // Replace coordinates with the actual module(s) you use, e.g. core/nn/data
+    implementation("sk.ai.net:core:0.0.+")
+}
+----
+
+. *Create a simple tensor* in your code and print it.
++
+[source,kotlin]
+----
+// Pseudo-code to keep this tutorial API-stable across develop changes.
+val t = /* Tensor.of(listOf(1.0, 2.0, 3.0), shape = Shape(3)) */
+println(t)
+----
+
+. *Run an operation* and validate the result.
++
+[source,kotlin]
+----
+val doubled = /* t * 2 */
+println(/* doubled.toPrettyString() */)
+----
+
+== What you learned
+* Wiring SKaiNET into a Gradle project
+* Creating and inspecting tensors
+* Executing basic ops on the CPU backend

@@ -1,19 +1,19 @@
-= SKaiNET
+= SKaiNET Documentation
+:page-layout: landing
+:description: The official documentation for SKaiNET using the Diátaxis (Divio) structure.
+:page-role: reference
 
-SKaiNET is a Kotlin multiplatform based framework for building and deploying machine learning models. It provides a set of tools and libraries that make it easy to create, train, and deploy machine learning models on supported targets platforms.
+Welcome to the **SKaiNET** docs. We organize content using the **Diátaxis** (Divio) model:
 
-== Goals
+* *Tutorials* — learn by doing, end‑to‑end lessons.
+* *How‑to Guides* — short, goal‑oriented recipes.
+* *Reference* — precise, dry API and CLI lookups.
+* *Explanations* — concepts, rationale, and design.
 
-* Built in Kotlin for a seamless developer experience.
-* Focus on exceptional efficiency and remarkable portability as standout features.
-* Comprehensive support for distributed computing and training.
-* User-friendly API that simplifies the development of innovative ML models.
-* Allows for seamless integration into existing Kotlin and JVM-based projects.
-* Designed to elevate ML endeavors for software developers, not just data science experts.
-* Blends power, flexibility, and developer accessibility for next-generation ML frameworks.
+== Quick links
+* xref:tutorials:index.adoc[Tutorials]
+* xref:how-to:index.adoc[How‑to Guides]
+* xref:reference:index.adoc[Reference]
+* xref:explanations:index.adoc[Explanations]
 
-== Supporters
-
-[link=https://cowo21.de/]
-image::https://cowo21.de/wp-content/uploads/2023/08/cropped-coworking-darmstadt-cowo21-1.jpg[csm_JavaLand_2025-Banner-3000x711px-Web_Hero-Mitte-01_0e6bad6822.jpg][]
-
+TIP: This docs set describes the **develop** branch. APIs may change before release.

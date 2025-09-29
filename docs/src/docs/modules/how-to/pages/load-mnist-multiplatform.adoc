@@ -1,0 +1,25 @@
+= How to Load MNIST on JVM, Android, iOS, and WASM
+:page-role: howto
+
+This guide shows platform‑specific steps to obtain `MNIST` examples and labels as tensors ready for model training.
+
+== Steps
+. Add the data module to your build:
++
+[source,kotlin]
+----
+dependencies {
+    implementation("sk.ai.net:data:0.0.+")
+}
+----
+
+. Initialize the loader for your platform (JVM example):
++
+[source,kotlin]
+----
+// Pseudo‑code: replace with the current loader API.
+val mnist = /* MNIST.load(cacheDir = Paths.get(".cache/mnist")) */
+val (train, test) = /* mnist.train to mnist.test */
+----
+. Convert samples to tensors and normalize them to [0,1].
+. Batch the data and proceed to training.

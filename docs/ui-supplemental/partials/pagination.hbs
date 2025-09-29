@@ -1,0 +1,18 @@
+{{#if (or page.previous page.next)}}
+<nav class="pagination" role="navigation" aria-label="pagination">
+  {{#if page.previous}}
+  <span class="prev">
+    <a href="{{{relativize page.previous.url}}}" class="query-params-link">
+      <span class="title">{{page.previous.content}}</span>
+    </a>
+  </span>
+  {{/if}}
+  {{#if page.next}}
+  <span class="next">
+    <a href="{{{relativize page.next.url}}}" class="query-params-link">
+      <span class="title">{{page.next.content}}</span>
+    </a>
+  </span>
+  {{/if}}
+</nav>
+{{/if}}

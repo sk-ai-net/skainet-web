@@ -1,0 +1,4 @@
+= Reflection Utilities API
+:page-role: reference
+
+Symbols for model summaries, parameter counts, and pretty tables.

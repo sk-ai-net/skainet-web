@@ -1,0 +1,4 @@
+= Views & Slicing API
+:page-role: reference
+
+Describe symbols for slicing, indexing, and view creation. Include pre/post‑conditions and shape rules.

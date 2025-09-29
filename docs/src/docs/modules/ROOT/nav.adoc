@@ -1,2 +1,4 @@
-.Core
-* xref:architecture.adoc[Architecture]
+= SKaiNET Docs
+
+.Home
+* xref:ROOT:index.adoc[Welcome]

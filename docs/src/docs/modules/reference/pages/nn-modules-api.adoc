@@ -1,0 +1,4 @@
+= Neural Network Modules API
+:page-role: reference
+
+List the building blocks (e.g., `Input`, `Flatten`, `Linear`, activations, `MLP`) and parameters/shapes.

@@ -1,0 +1,65 @@
+name: Publish Antora docs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Run Gradle Antora build
+        # You can enable caching of Gradle and Node modules if desired
+        run: |
+          ./gradlew --no-daemon antora
+
+      - name: Ensure .nojekyll exists in generated site
+        run: |
+          # Assuming default location build/site
+          if [ -d build/site ]; then
+            touch build/site/.nojekyll
+          else
+            echo "Error: build/site not found"
+            exit 1
+          fi
+
+      - name: Configure Pages for GitHub Actions
+        uses: actions/configure-pages@v4
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/site
+
+      - name: Show published URL
+        run: |
+          echo "Site published to ${{ steps.deployment.outputs.page_url }}"

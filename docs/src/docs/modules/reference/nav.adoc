@@ -1,0 +1,8 @@
+* xref:index.adoc[Reference]
+** xref:tensors-api.adoc[Tensors API]
+** xref:views-slicing-api.adoc[Views & Slicing API]
+** xref:backends-api.adoc[Backends API]
+** xref:datasets-api.adoc[Datasets API]
+** xref:nn-modules-api.adoc[Neural Network Modules API]
+** xref:reflection-api.adoc[Reflection Utilities API]
+** xref:api/index.adoc[Generated API (Dokka)]

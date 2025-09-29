@@ -1,0 +1,104 @@
+:root{
+  --sk-bg:#0b1224;
+  --sk-surface:#0f1a36;
+  --sk-card:#101b38;
+  --sk-border:#233055;
+  --sk-text:#e6ecff;
+  --sk-sub:#b9c4e6;
+  --sk-primary:#3b82f6;
+  --sk-primary-2:#2563eb;
+  --sk-accent:#22d3ee;
+}
+/* Landing page specific styling only */
+.sk-body{ background: linear-gradient(180deg,#0b1224 0%, #0a0f1f 100%); color: var(--sk-text); }
+.sk-body .navbar, .sk-body .nav, .sk-body .nav-panel{ background: var(--sk-surface) !important; border-right:1px solid var(--sk-border); }
+
+/* Navigation styling for content pages - keep functionality but use default colors */
+body.article .nav-list { display: block !important; }
+body.article .nav-item { display: list-item !important; }
+body.article .nav-item-toggle { display: inline-block !important; cursor: pointer; }
+.sk-body .toolbar{ background: rgba(10,16,36,.6); border-bottom:1px solid var(--sk-border); }
+.sk-body .breadcrumbs{ color:#cfe3ff }
+.sk-body .breadcrumbs a{ color: var(--sk-accent) }
+.sk-body .article .doc{
+  background: rgba(16,27,56,.55);
+  border:1px solid var(--sk-border);
+  border-radius: 16px;
+  padding: 1.2rem;
+}
+.sk-body code, .sk-body pre{ background:#0b1330; border:1px solid #223054; }
+.sk-body a{ color: var(--sk-accent); }
+/* Landing-only visuals */
+.sk-header{ position:sticky; top:0; z-index:5; background:linear-gradient(90deg,rgba(23,37,84,.95),rgba(30,58,138,.95)); border-bottom:1px solid var(--sk-border); backdrop-filter:saturate(120%) blur(6px); }
+.sk-header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.sk-brand{display:flex;align-items:center;gap:10px;color:#cfe3ff;font-weight:700;letter-spacing:.3px;text-decoration:none}
+.sk-logo{width:24px;height:24px;filter:drop-shadow(0 0 4px rgba(34,211,238,.6))}
+.sk-nav a{margin-left:18px;color:#d9e4ff;text-decoration:none}
+.sk-nav a.sk-nav-cta{padding:8px 12px;border:1px solid var(--sk-border);border-radius:8px}
+.sk-body .sk-hero{padding:80px 20px 40px}
+.sk-hero-inner{max-width:900px;margin:0 auto;text-align:center}
+.sk-badge{display:inline-block;font-size:12px;letter-spacing:.3px;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.4);padding:6px 10px;border-radius:999px;color:#baf6ff;margin-bottom:14px}
+.sk-hero h1{margin:0 0 8px;font-size:40px;line-height:1.1;letter-spacing:.3px;color:#f0f5ff;text-shadow:0 3px 30px rgba(34,211,238,.15)}
+.sk-hero-sub{color:var(--sk-sub);max-width:680px;margin:0 auto 18px}
+.sk-cta{display:flex;gap:12px;justify-content:center;margin-top:10px}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:10px;border:1px solid var(--sk-border);text-decoration:none}
+.sk-btn-primary{background:linear-gradient(180deg,var(--sk-primary),var(--sk-primary-2)); color:white}
+.sk-btn-ghost{color:#cfe3ff}
+.sk-cards{padding:22px 20px 36px}
+.sk-cards-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sk-card{display:block;background:linear-gradient(180deg,rgba(59,130,246,.15),rgba(37,99,235,.04));border:1px solid var(--sk-border);padding:18px;border-radius:14px;color:#dfe8ff;transition:transform .12s ease, box-shadow .12s ease;text-decoration:none}
+.sk-card:hover{transform:translateY(-2px); box-shadow:0 10px 35px rgba(0,0,0,.25)}
+.sk-card-ico{font-weight:700;margin-bottom:6px;opacity:.9}
+.sk-card h3{margin:.2rem 0 .2rem}
+.sk-container{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+.sk-article h1,.sk-article h2,.sk-article h3{color:#f3f6ff}
+.sk-footer{border-top:1px solid var(--sk-border); padding:20px 0; background:rgba(8,12,24,.6)}
+.sk-footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;color:#a9b7d9;padding:0 20px}
+.sk-footer-links a{margin-left:12px;color:#b7c6ea;text-decoration:none}
+@media (max-width:900px){ .sk-cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width:560px){ .sk-cards-grid{grid-template-columns:1fr;} .sk-footer-inner{flex-direction:column;gap:8px} }
+
+/* Show pagination navigation on article pages */
+nav.pagination {
+    display: flex !important;
+}
+
+/* Fix duplicate elements and navigation issues */
+/* Hide the first toolbar to avoid duplication - keep only the one inside article.doc */
+main.article > .toolbar:first-of-type {
+    display: none !important;
+}
+
+/* Hide duplicate TOC sidebar outside article */
+main.article > .content > .toc.sidebar {
+    display: none !important;
+}
+
+/* Ensure left sidebar navigation works properly */
+.nav-panel-menu .nav-list {
+    display: block !important;
+}
+
+.nav-item.has-children > .nav-list {
+    display: none;
+}
+
+.nav-item.has-children.is-active > .nav-list,
+.nav-item.has-children.is-current-path > .nav-list {
+    display: block !important;
+}
+
+/* Improve navigation item visibility and interaction */
+.nav-item-toggle {
+    display: inline-block !important;
+    cursor: pointer !important;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+}
+
+/* Make current page more visible in navigation */
+.nav-item.is-current-page > .nav-link {
+    font-weight: bold;
+    color: var(--sk-accent) !important;
+}

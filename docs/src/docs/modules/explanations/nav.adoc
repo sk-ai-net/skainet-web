@@ -1,0 +1,6 @@
+* xref:index.adoc[Explanations]
+** xref:views-and-materialization.adoc[Why Tensor Views? Materialization & Layout]
+** xref:broadcasting-shapes.adoc[Broadcasting Rules & Shape Algebra]
+** xref:compute-backend-design.adoc[Compute Backend Abstraction]
+** xref:module-api-design.adoc[Module API & `forward`]
+** xref:datasets-architecture.adoc[Datasets & Batching Beyond MNIST]

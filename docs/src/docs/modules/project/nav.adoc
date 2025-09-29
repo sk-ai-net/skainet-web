@@ -1,0 +1,3 @@
+.Project
+* xref:contributing.adoc[Contributing]
+* xref:changelog.adoc[Changelog]

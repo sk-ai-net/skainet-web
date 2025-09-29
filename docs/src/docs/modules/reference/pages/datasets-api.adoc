@@ -1,0 +1,4 @@
+= Datasets API
+:page-role: reference
+
+Define dataset abstractions (dataset, batch, iterator) and the MNIST loader types and outputs.

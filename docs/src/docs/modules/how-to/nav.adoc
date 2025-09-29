@@ -1,0 +1,6 @@
+* xref:index.adoc[How-to]
+** xref:load-mnist-multiplatform.adoc[Load MNIST on JVM/Android/iOS/WASM]
+** xref:define-mlp-with-dsl.adoc[Define an MLP with the Module DSL]
+** xref:print-model-summary.adoc[Inspect Models with Reflection Utilities]
+** xref:slice-and-broadcast-safely.adoc[Slice & Broadcast Tensors Safely]
+** xref:add-operation-to-backend.adoc[Add a New Operation to a Compute Backend]

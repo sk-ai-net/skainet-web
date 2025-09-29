@@ -1,0 +1,7 @@
+= Contributing
+:page-role: reference
+
+Thanks for helping improve SKaiNET!
+
+== Workflow
+We follow GitFlow on this repository. Please branch from `develop`, use concise PRs, and include tests.

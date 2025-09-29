@@ -1,0 +1,4 @@
+= Designing the Module API and the `forward` Contract
+:page-role: explanation
+
+Rationale for a streamlined `forward(input)` API, module composition, and shape/dtype validation.

@@ -1,0 +1,4 @@
+= Reference
+:page-role: reference
+
+Authoritative, precise definitions of public APIs. For parameter/return details, prefer the generated Dokka pages.

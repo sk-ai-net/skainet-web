@@ -1,0 +1,4 @@
+= Changelog (high‑level)
+:page-role: reference
+
+Keep a high‑level list of notable changes that affect users. For commit‑level details, see the Git history.

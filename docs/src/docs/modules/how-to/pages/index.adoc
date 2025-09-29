@@ -1,0 +1,4 @@
+= How‑to Guides
+:page-role: howto
+
+Short, task‑oriented guides. Pick a goal and follow the steps.

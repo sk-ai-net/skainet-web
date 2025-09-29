@@ -1,0 +1,4 @@
+= Backends API
+:page-role: reference
+
+Define the `ComputeBackend` SPI and the provided backends (e.g., CPU). List supported operations and dtypes.
