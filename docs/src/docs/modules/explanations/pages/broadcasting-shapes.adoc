@@ -1,4 +1,0 @@
-= Broadcasting Rules and Shape Algebra in SKaiNET
-:page-role: explanation
-
-Explain broadcasting semantics, dimension alignment, and how unit tests keep corner cases honest.

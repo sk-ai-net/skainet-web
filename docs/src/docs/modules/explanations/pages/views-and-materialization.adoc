@@ -1,4 +1,0 @@
-= Why Tensor Views? Materialization Strategy and Memory Layout
-:page-role: explanation
-
-*Views vs. copies*: explain how views let you work with sub‑regions without copying data, and when materialization is required.

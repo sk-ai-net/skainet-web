@@ -1,4 +1,0 @@
-= Tensors API
-:page-role: reference
-
-Document the key tensor abstractions (shape, dtype, storage) and public operations. Keep narrative to a minimum.

@@ -1,9 +1,0 @@
-= How to Slice and Broadcast Tensors Safely
-:page-role: howto
-
-Use slicing to select sub‑tensors and rely on broadcasting rules for efficient arithmetic without explicit expands.
-
-== Steps
-. Slice with ranges and index helpers.
-. Align shapes to broadcast correctly.
-. Validate results against small hand‑computed examples.

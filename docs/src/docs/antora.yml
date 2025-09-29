@@ -3,9 +3,4 @@ title: SKaiNET
 version: HEAD
 nav:
   - modules/ROOT/nav.adoc
-  - modules/arc42/nav.adoc
   - modules/tutorials/nav.adoc
-  - modules/how-to/nav.adoc
-  - modules/reference/nav.adoc
-  - modules/explanations/nav.adoc
-  - modules/project/nav.adoc

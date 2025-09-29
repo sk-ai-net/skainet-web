@@ -1,9 +1,0 @@
-= How to Inspect Models with the Reflection Utilities
-:page-role: howto
-
-Leverage the reflection helpers to print module trees, parameter counts, and table‑like summaries.
-
-== Steps
-. Import the reflection utilities.
-. Print a per‑layer summary and total parameter count.
-. Dump a table with shapes and dtypes for quick auditing.

@@ -1,9 +1,0 @@
-= Generated API (Dokka)
-:page-role: reference
-
-Open the generated API reference (whichever exists in your build):
-
-* link:../assets/api/_multi/index.html[Multi‑module Dokka index]
-* link:../assets/api/skainet-core/index.html[skainet-core API]
-* link:../assets/api/skainet-nn/index.html[skainet-nn API]
-* link:../assets/api/skainet-data/index.html[skainet-data API]

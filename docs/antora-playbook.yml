@@ -16,7 +16,6 @@ ui:
   # You can pin a version instead of "latest" if you prefer
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
-  supplemental_files: ./ui-supplemental
 
 runtime:
   cache_dir: ./.cache/antora

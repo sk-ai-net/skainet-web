@@ -1,5 +1,4 @@
 = SKaiNET Documentation
-:page-layout: landing
 :description: The official documentation for SKaiNET using the Diátaxis (Divio) structure.
 :page-role: reference
 

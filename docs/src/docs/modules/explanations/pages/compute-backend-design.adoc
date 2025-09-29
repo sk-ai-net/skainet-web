@@ -1,4 +1,0 @@
-= The Compute Backend Abstraction
-:page-role: explanation
-
-Discuss the separation between the high‑level tensor API and backend implementations (e.g., CPU/GPU), including extension points.

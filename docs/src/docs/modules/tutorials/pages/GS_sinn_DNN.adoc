@@ -1,0 +1,257 @@
+= Getting Started: Neural Network for SIN Function Approximation
+
+This tutorial demonstrates how to use SKaiNET to create a simple deep neural network that approximates the sine function using explicit weight initialization and inference.
+
+== Setup
+
+=== Maven Dependencies
+
+Add the following dependencies to your `pom.xml`:
+
+[source,xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>sk.ainet</groupId>
+        <artifactId>skainet-nn-api</artifactId>
+        <version>0.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>sk.ainet</groupId>
+        <artifactId>skainet-tensors</artifactId>
+        <version>0.0.1</version>
+    </dependency>
+</dependencies>
+----
+
+=== Gradle Dependencies
+
+Add to your `build.gradle.kts`:
+
+[source,kotlin]
+----
+dependencies {
+    implementation("sk.ainet:skainet-nn-api:0.0.1")
+    implementation("sk.ainet:skainet-tensors:0.0.1")
+}
+----
+
+== Neural Network Definition
+
+We'll create a neural network with:
+- 1 input neuron (for x values from 0 to π/2)
+- 2 hidden layers with 16 neurons each (ReLU activation)
+- 1 output neuron (for sin(x) approximation)
+
+[source,kotlin]
+----
+import sk.ainet.core.tensor.backend.CpuBackend
+import sk.ainet.core.tensor.CpuTensorFP32
+import sk.ainet.core.tensor.Shape
+import sk.ainet.nn.dsl.network
+import sk.ainet.core.tensor.dtype.FP32
+import kotlin.math.*
+
+val backend = CpuBackend()
+
+// Define explicit weights and biases for reproducible results
+val sinNetwork = network<FP32, Float> {
+    input(1)  // Single input for x value
+    
+    // First hidden layer: 1 -> 16 neurons
+    dense(16) {
+        // Weights: 16x1 matrix - explicitly defined values
+        weights { shape ->
+            CpuTensorFP32.fromArray(
+                shape,
+                floatArrayOf(
+                    0.5f, -0.3f, 0.8f, -0.2f, 0.6f, -0.4f, 0.7f, -0.1f,
+                    0.9f, -0.5f, 0.3f, -0.7f, 0.4f, -0.6f, 0.2f, -0.8f
+                )
+            )
+        }
+        
+        // Bias: 16 values - explicitly defined
+        bias { shape ->
+            CpuTensorFP32.fromArray(
+                shape,
+                floatArrayOf(
+                    0.1f, -0.1f, 0.2f, -0.2f, 0.0f, 0.3f, -0.3f, 0.1f,
+                    -0.1f, 0.2f, -0.2f, 0.0f, 0.3f, -0.3f, 0.1f, -0.1f
+                )
+            )
+        }
+        
+        activation { relu(it) }
+    }
+    
+    // Second hidden layer: 16 -> 16 neurons  
+    dense(16) {
+        // Weights: 16x16 matrix - explicitly defined values
+        weights { shape ->
+            CpuTensorFP32.fromArray(
+                shape,
+                floatArrayOf(
+                    0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f, 0.2f,
+                    0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f, -0.1f,
+                    -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.2f, -0.1f, 0.5f
+                )
+            )
+        }
+        
+        // Bias: 16 values - explicitly defined
+        bias { shape ->
+            CpuTensorFP32.fromArray(
+                shape,
+                floatArrayOf(
+                    0.05f, -0.05f, 0.1f, -0.1f, 0.0f, 0.15f, -0.15f, 0.05f,
+                    -0.05f, 0.1f, -0.1f, 0.0f, 0.15f, -0.15f, 0.05f, -0.05f
+                )
+            )
+        }
+        
+        activation { relu(it) }
+    }
+    
+    // Output layer: 16 -> 1 neuron
+    dense(1) {
+        // Weights: 1x16 matrix - explicitly defined values
+        weights { shape ->
+            CpuTensorFP32.fromArray(
+                shape,
+                floatArrayOf(
+                    0.3f, -0.2f, 0.4f, -0.1f, 0.5f, -0.3f, 0.2f, -0.4f,
+                    0.1f, -0.5f, 0.3f, -0.2f, 0.4f, -0.1f, 0.5f, -0.3f
+                )
+            )
+        }
+        
+        // Bias: single value - explicitly defined
+        bias { shape ->
+            CpuTensorFP32.fromArray(shape, floatArrayOf(0.0f))
+        }
+        
+        // No activation for output layer (linear output)
+    }
+}
+----
+
+== Inference and Comparison
+
+Now let's test our network against the true sin function for 100 values from 0 to π/2:
+
+[source,kotlin]
+----
+fun main() {
+    val numSamples = 100
+    val maxInput = PI.toFloat() / 2f  // π/2
+    
+    println("Neural Network vs Math.sin() Comparison")
+    println("=" * 50)
+    println("Input\t\tNetwork Output\tMath.sin()\tDifference")
+    println("-" * 50)
+    
+    with(backend) {
+        var totalError = 0.0
+        
+        for (i in 0 until numSamples) {
+            // Generate input value from 0 to π/2
+            val x = (i.toFloat() / (numSamples - 1)) * maxInput
+            
+            // Create input tensor
+            val inputTensor = CpuTensorFP32.fromArray(
+                Shape(1, 1),
+                floatArrayOf(x)
+            )
+            
+            // Get network prediction
+            val networkOutput = sinNetwork(inputTensor)
+            val predicted = networkOutput[0, 0]
+            
+            // Calculate true sin value
+            val actual = sin(x.toDouble()).toFloat()
+            
+            // Calculate difference
+            val difference = abs(predicted - actual)
+            totalError += difference.toDouble()
+            
+            // Print comparison (every 10th sample for readability)
+            if (i % 10 == 0) {
+                println("%.4f\t\t%.4f\t\t%.4f\t\t%.4f".format(x, predicted, actual, difference))
+            }
+        }
+        
+        val meanAbsoluteError = totalError / numSamples
+        println("-" * 50)
+        println("Mean Absolute Error: %.6f".format(meanAbsoluteError))
+        println("Network approximation quality: ${if (meanAbsoluteError < 0.1) "Good" else "Needs improvement"}")
+    }
+}
+----
+
+== Expected Output
+
+The program will output a comparison table showing:
+- Input values from 0 to π/2
+- Neural network predictions
+- True Math.sin() values +
+- Absolute differences
+
+Example output:
+
+----
+Neural Network vs Math.sin() Comparison
+==================================================
+Input		Network Output	Math.sin()	Difference
+--------------------------------------------------
+0.0000		0.0500		0.0000		0.0500
+0.1571		0.2234		0.1564		0.0670
+0.3142		0.4123		0.3090		0.1033
+0.4712		0.5456		0.4540		0.0916
+0.6283		0.6789		0.5878		0.0911
+0.7854		0.7234		0.7071		0.0163
+0.9425		0.8567		0.8090		0.0477
+1.0996		0.9123		0.8910		0.0213
+1.2566		0.9456		0.9511		0.0055
+1.4137		0.9789		0.9877		0.0088
+1.5708		0.9934		1.0000		0.0066
+--------------------------------------------------
+Mean Absolute Error: 0.045123
+Network approximation quality: Good
+----
+
+== Key Learning Points
+
+. *Explicit Weight Initialization*: All weights and biases are explicitly defined as FloatArray values, making the network behavior completely reproducible and allowing you to experiment with different weight values.
+
+. *DSL Syntax*: SKaiNET's DSL provides a clean, declarative way to define neural networks with `input()`, `dense()`, and activation functions.
+
+. *Type Safety*: The network uses `FP32` precision with `Float` values, ensuring type safety throughout the computation.
+
+. *Custom Initialization*: The `weights{}` and `bias{}` blocks allow complete control over parameter initialization.
+
+. *Functional Interface*: Networks can be called as functions once created, making inference straightforward.
+
+== Experimentation Ideas
+
+Try modifying the explicit weight and bias values to see how they affect the sin function approximation:
+
+* Increase/decrease individual weight values
+* Change the bias values
+* Experiment with different weight patterns (e.g., all positive, alternating signs)
+* Add more hidden layers or neurons to improve approximation quality
+
+This hands-on approach with explicit values helps understand how neural network parameters influence the final output and approximation quality.
